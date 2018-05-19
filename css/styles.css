@@ -16,6 +16,7 @@ ul, li {
 	font-family: Roboto, Helvetica, sans-serif;
 	font-size: 16px;
 	color: #333;
+  font-weight: 350;
 }
 a {
 	color: orange;
@@ -50,6 +51,39 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   text-align: center;
   text-transform: uppercase;
 }
+/*======================= Skip Link =======================*/
+.skip-link {
+  position: absolute;
+  top: -300px;
+  left: 0;
+  background: #ce7a25;
+  color: white;
+  padding: 8px;
+  font-size: 1em;
+  font-weight: 500;
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 0;
+  color: white;
+}
+
+header {
+  background-color: #2d313d;
+  width: 100%;
+  text-align: center;
+}
+header h1 {
+  padding: 0.8em 0;
+  margin: auto;
+}
+header h1 a{
+  font-size: 16px;
+  color: #fff;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+}
 /* ====================== Navigation ====================== */
 nav {
   width: 100%;
@@ -63,17 +97,15 @@ nav h1 {
 nav h1 a {
   color: #fff;
   font-size: 14pt;
-  font-weight: 200;
+  font-weight: 300;
   letter-spacing: 10px;
   text-transform: uppercase;
 }
 #breadcrumb {
-    padding: 10px 40px 16px;
+    padding: 0.8em 1.4em;
     list-style: none;
     background-color: #eee;
-    font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
 }
 
 /* Display list items side by side */
@@ -237,7 +269,6 @@ nav h1 a {
   text-align: center;
   letter-spacing: 7px;
   width: 90%;
-  /*margin: 0 0 20px;*/
   margin: 1em 0;
   padding: 2px 0;
   margin-right: auto;
@@ -309,7 +340,7 @@ nav h1 a {
 }
 .review-date {
   font-weight: 300;
-  font-size: .08em;
+  font-size: 0.9em;
   float: right;
   margin: 0;
   padding: 1.2em 1em 0 0;
