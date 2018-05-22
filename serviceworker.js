@@ -1,3 +1,4 @@
+const staticCacheName = 'restaurant-reviews-v1';
 //file images | scripts
 const cached_urls = [
   '/',
@@ -23,7 +24,7 @@ const cached_urls = [
 // cache
 self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('Version_1').then(function(cache) {
+    caches.open(staticCacheName).then(function(cache) {
       return cache.addAll(cached_urls);
     })
   );
@@ -39,15 +40,15 @@ self.addEventListener('fetch', function(event) {
   );
 });
 
-// delete old cache
+//delete old cache
 self.addEventListener('activate', function(event) {
   console.log("Success sw activated!!!");
   event.waitUntil(
     caches.keys().then(function(cacheNames){
       return Promise.all(
         cacheNames.filter(function(cacheName){
-          return cacheName.startsWith('Version_') &&
-        cacheName != staticCacheName;
+          return cacheName.startsWith('restaurant-reviews-') &&
+        cacheName !=staticCacheName;
         }).map(function(cacheName) {
           return caches.delete(cacheName);
         })
