@@ -56,7 +56,7 @@ self.addEventListener('activate', function(event) {
   );
 });
 
-// fetch | error
+fetch | error
 self.addEventListener('fetch', function(event) {
   console.log("...Service Worker initiating the fetch!");
   event.respondWith(
