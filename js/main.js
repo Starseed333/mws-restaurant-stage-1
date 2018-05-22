@@ -141,9 +141,10 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = DBHelper.imageALTForRestaurant(restaurant);
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -156,8 +157,10 @@ createRestaurantHTML = (restaurant) => {
   li.append(address);
 
   const more = document.createElement('a');
-  more.innerHTML = 'View Details';
+  more.name = DBHelper.ariaForRestaurant(restaurant);
+  more.innerHTML = '<span class= "hidden">'+ more.name+ '</span>' + 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+
   li.append(more)
 
   return li
@@ -175,4 +178,15 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     });
     self.markers.push(marker);
   });
+}
+
+if ('serviceWorker' in navigator){
+  navigator.serviceWorker
+    .register('./serviceworker.js', { scope: "./" })
+    .then(function(registration) {
+      console.log('Success registration worked!', registration);
+    })
+    .catch(function(err) {
+      console.log('Registration failed!', err);
+    })
 }

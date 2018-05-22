@@ -145,6 +145,10 @@ class DBHelper {
   static urlForRestaurant(restaurant) {
     return (`./restaurant.html?id=${restaurant.id}`);
   }
+  static ariaForRestaurant(restaurant) {
+    // console.log (`${restaurant.name}`);
+    return (`${restaurant.name}`);
+  }
 
   /**
    * Restaurant image URL.
@@ -152,6 +156,10 @@ class DBHelper {
   static imageUrlForRestaurant(restaurant) {
     return (`/img/${restaurant.photograph}`);
   }
+  static imageALTForRestaurant(restaurant) {
+    return (`${restaurant.alt}`);
+  }
+
 
   /**
    * Map marker for a restaurant.
