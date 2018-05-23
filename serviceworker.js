@@ -33,9 +33,16 @@ self.addEventListener('install', function(event) {
 // Retrieve data from cache
 self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.match(event.request).then(function(response){
-      if (response) return response;
-      return fetch (event.request);
+    caches.open(staticCacheName).then(function(cache){
+      return cache.match(event.request).then(function(response){
+        return response || fetch(event.request).then(function(response){
+          cache.put(event.request, response.clone());
+            console.log("new data included to cache", event.request.url);
+            return response;
+        }).catch(function(error){
+            console.log("Error!! ", error);
+        });
+      });
     })
   );
 });
